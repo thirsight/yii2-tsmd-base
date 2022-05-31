@@ -1,0 +1,20 @@
+{
+    "name": "thirsight/yii2-tsmd-base",
+    "description": "TSMD base module for Yii2.",
+    "keywords": ["yii2", "thirsight", "tsmd", "base"],
+    "homepage": "https://tsmd.thirsight.com/",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Haisen",
+            "email": "thirsight@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4.1",
+        "yiisoft/yii2": "~2.0.40",
+        "firebase/php-jwt": "^6.1",
+        "guzzlehttp/guzzle": "^7.0"
+    }
+}

@@ -1,7 +1,11 @@
 
-**/_dbtpl.php
-**/_dbtpl-*.php
-!**/_dbtpl-example.php
+/runtime
+/runtime/*
+/runtime/**
+!/runtime/index.php
+/tests/_output/**
+/web/assets/**
+!/web/assets/index.html
 
 # phpstorm project files
 .idea
