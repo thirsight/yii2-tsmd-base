@@ -93,10 +93,8 @@ class UserSearch extends Model
             ->andWhereRealname($this->realname)
             ->andWhereNickname($this->nickname);
 
-        if ($withCount) {
-            $count = $query->count();
-        }
-        $rows = $query->addPaging()->orderBy('uid DESC')->allWithFormat();
-        return [$rows, $count ?? 0];
+        $count = $withCount ? $query->count() : 0;
+        $rows  = $query->addPaging()->orderBy('uid DESC')->allWithFormat();
+        return [$rows, $count];
     }
 }

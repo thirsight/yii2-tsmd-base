@@ -94,9 +94,9 @@ class TsmdResult
     }
 
     /**
-     * @param array $model
+     * @param array|Model $model
      */
-    public function setModel(array $model)
+    public function setModel($model)
     {
         $this->type = 'model';
         if ($model instanceof Model) {
