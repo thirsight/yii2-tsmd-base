@@ -1,6 +1,6 @@
 {
     "name": "thirsight/yii2-tsmd-base",
-    "description": "TSMD base module for Yii2.",
+    "description": "TSMD Base module for Yii2.",
     "keywords": ["yii2", "thirsight", "tsmd", "base"],
     "homepage": "https://tsmd.thirsight.com/",
     "type": "library",

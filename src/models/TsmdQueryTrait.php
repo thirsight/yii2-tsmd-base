@@ -35,6 +35,17 @@ trait TsmdQueryTrait
     }
 
     /**
+     * @param null $db
+     * @return array
+     */
+    public function allWithCount($db = null)
+    {
+        $count = $this->count();
+        $rows = parent::all($db);
+        return [$rows, $count];
+    }
+
+    /**
      * @param array|string $inclFields
      * @param array|string $exclFields
      * @return $this

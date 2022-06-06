@@ -43,7 +43,7 @@ class YiiRequest extends \yii\web\Request
      */
     public function getPage()
     {
-        $page = $this->getQueryParam('page', 1);
+        $page = (int) $this->getQueryParam('page', 1);
         return min(max($page, 1), 100);
     }
 
@@ -51,18 +51,18 @@ class YiiRequest extends \yii\web\Request
      * 获取分页参数，每页记录数量，最多100条，用于查询参数 limit
      *
      * @param int $defaultValue
-     * @return integer
+     * @return int
      */
     public function getPageSize($defaultValue = 20)
     {
-        $pageSize = $this->getQueryParam('pageSize', $defaultValue);
+        $pageSize = (int) $this->getQueryParam('pageSize', $defaultValue);
         return min(max($pageSize, -1), 1000);
     }
 
     /**
      * 获取分页参数，每页记录起始值，用户查询参数 offset
      *
-     * @return integer
+     * @return int
      */
     public function getPageOffset()
     {

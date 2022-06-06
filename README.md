@@ -1,4 +1,4 @@
-TSMD base module for Yii2
+TSMD Base module for Yii2
 =========================
 
 TSMD 是基于 Yii2 的模块化设计的接口框架，基础模块包含以下子模块：
