@@ -9,6 +9,24 @@ namespace tsmd\base\yii;
 class YiiRequest extends \yii\web\Request
 {
     /**
+     * fix issue: HTTP Authorization header missing
+     * @see .htaccess
+     */
+    public function getHeaders()
+    {
+        $headers = parent::getHeaders();
+        if (!$headers->has('Authorization') &&
+            (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])
+                || isset($_SERVER['REDIRECT_AUTHORIZATION'])
+                || isset($_SERVER['HTTP_AUTHORIZATION']))
+        ) {
+            $headers->add('Authorization', $_SERVER['REDIRECT_HTTP_AUTHORIZATION']
+                ?? ($_SERVER['REDIRECT_AUTHORIZATION'] ?? $_SERVER['HTTP_AUTHORIZATION']));
+        }
+        return $headers;
+    }
+
+    /**
      * @inheritdoc
      */
     public function getUserIP()

@@ -5,6 +5,9 @@ DirectoryIndex index.html index.php
 <IfModule mod_rewrite.c>
     RewriteEngine on
 
+    # fix issue: HTTP Authorization header missing (@see \tsmd\base\yii\YiiRequest::getHeaders())
+    SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
 
