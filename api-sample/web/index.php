@@ -9,6 +9,11 @@ if (in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])) {
 $appPath = dirname(__DIR__);
 $tsmdPath = $appPath . '/../vendor/thirsight';
 
+// for ...config/bootstrap.php getModuleConfigs()
+defined('EXTRA_VENDOR_PATHS') or define('EXTRA_VENDOR_PATHS', [
+    dirname($tsmdPath) . '/xxx',
+]);
+
 require $appPath . '/../vendor/autoload.php';
 require $appPath . '/../vendor/yiisoft/yii2/Yii.php';
 require $tsmdPath . '/yii2-tsmd-base/config/bootstrap.php';

@@ -2,7 +2,7 @@
 
 namespace tsmd\base\user\models;
 
-include "../components/taobao-sdk/TopSdk.php";
+include __DIR__ . "/../components/taobao-sdk/TopSdk.php";
 
 /**
  * @author Haisen <thirsight@gmail.com>
@@ -80,9 +80,9 @@ class UsertpSourceDingtalk extends UsertpSource
             }
         }
 
-        $clt = new \DingTalkClient(\DingTalkConstant::$CALL_TYPE_OAPI, \DingTalkConstant::$METHOD_POST , \DingTalkConstant::$FORMAT_JSON);
+        $clt = new \DingTalkClient(\DingTalkConstant::$CALL_TYPE_OAPI, \DingTalkConstant::$METHOD_POST, \DingTalkConstant::$FORMAT_JSON);
         $req = new \OapiSnsGetuserinfoBycodeRequest;
-        $req->setTmpAuthCode($this->code);
+        $req->setTmpAuthCode($this->token);
         $resp = $clt->executeWithAccessKey($req, "https://oapi.dingtalk.com/sns/getuserinfo_bycode", $this->appId, $this->appSecret);
         if (empty($resp->user_info)) {
             return false;

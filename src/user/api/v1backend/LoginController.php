@@ -33,8 +33,9 @@ class LoginController extends \tsmd\base\controllers\RestBackendController
      *
      * Argument | Type | Required | Description
      * -------- | ---- | -------- | -----------
+     * loginType  | [[string]] | Yes | mobile, email, username, tpApple, tpFacebook, tpDingtalk
      * loginName  | [[string]] | Yes | 用户名
-     * password   | [[string]] | Yes | 密码
+     * password   | [[string]] | No  | 密码
      *
      * @return array|UserFormLogin
      */

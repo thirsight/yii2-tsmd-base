@@ -50,6 +50,28 @@ class UserController extends \tsmd\base\controllers\RestBackendController
     ];
 
     /**
+     * 已认证证用户信息
+     *
+     * <kbd>API</kbd> <kbd>POST</kbd> `/user/v1backend/user/auth-info`
+     *
+     * @return array
+     */
+    public function actionAuthInfo()
+    {
+        // RBAC
+        $rbacAssignments = Yii::$app->authManager->getAssignments($this->user->uid);
+        $rbacAssignments = array_column(array_values($rbacAssignments), 'roleName');
+        $rbacPermissions = Yii::$app->authManager->getPermissionsByUser($this->user->uid);
+        $rbacPermissions = array_column(array_values($rbacPermissions), 'name');
+
+        return TsmdResult::responseModel([
+            'user' => $this->user->toArray($this->fields),
+            'rbacAssignments' => $rbacAssignments,
+            'rbacPermissions' => $rbacPermissions,
+        ]);
+    }
+
+    /**
      * <kbd>API</kbd> <kbd>GET</kbd> `/user/v1backend/user/prepare`
      *
      * @return array

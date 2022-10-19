@@ -27,12 +27,12 @@
  * @param string $basename
  * @return array[]
  */
-function getModuleConfigs(string $basedir, string $basename, array $extraVendorPaths = []) {
+function getModuleConfigs(string $basedir, string $basename) {
     $vendorPaths = [
-        $tsPatch = dirname(dirname(__DIR__)),
+        dirname(dirname(__DIR__)),
     ];
-    if ($extraVendorPaths) {
-        $vendorPaths = array_merge($vendorPaths, $extraVendorPaths);
+    if (defined('EXTRA_VENDOR_PATHS')) {
+        $vendorPaths = array_merge($vendorPaths, EXTRA_VENDOR_PATHS);
     }
 
     static $modulePaths;
@@ -49,7 +49,7 @@ function getModuleConfigs(string $basedir, string $basename, array $extraVendorP
     $configs = [];
     foreach ($modulePaths as $modulePath) {
         $configFile = $modulePath . DIRECTORY_SEPARATOR . $basedir . DIRECTORY_SEPARATOR . $basename . '.php';
-        if (is_file($configFile) && stripos($configFile, 'yii2-tsmd-base') === false) {
+        if (is_file($configFile) && stripos($configFile, 'thirsight/yii2-tsmd-base') === false) {
             $configs[] = require $configFile;
         }
     }
